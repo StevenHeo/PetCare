@@ -15,7 +15,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_profile);
         back_image = (ImageView)findViewById(R.id.backbtn_image);
 
-
         backButton(back_image);
     }
     private void backButton(ImageView back_image){
