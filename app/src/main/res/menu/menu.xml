@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/calendar"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="CALENDAR"></item>
+    <item android:id="@+id/statistic"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:title="STATISTIC"></item>
+    <item android:id="@+id/profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="PROFILE"></item>
+</menu>
