@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mouth_menu0"
+        android:title="이상 없음" />
+    <item
+        android:id="@+id/mouth_menu1"
+        android:title="누런 치석이 있으며 입냄새가 난다" />
+    <item
+        android:id="@+id/mouth_menu2"
+        android:title="상처나 부스럼이 있으며 입냄새가 난다" />
+    <item
+        android:id="@+id/mouth_menu3"
+        android:title="이가 흔들리며 입냄새가 난다" />
+    <item
+        android:id="@+id/mouth_menu4"
+        android:title="입 주위/입술이 헐었으며 입냄새가 난다" />
+
+</menu>

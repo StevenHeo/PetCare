@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/skin_menu0"
+        android:title="이상 없음" />
+    <item
+        android:id="@+id/skin_menu1"
+        android:title="몸/전신에서 냄새가 난다" />
+    <item
+        android:id="@+id/skin_menu2"
+        android:title="비듬이 생긴다" />
+    <item
+        android:id="@+id/skin_menu3"
+        android:title="엉덩이/등에 탈모 증상이 있다" />
+    <item
+        android:id="@+id/skin_menu4"
+        android:title="등/배 털이 좌우대칭으로 빠진다" />
+    <item
+        android:id="@+id/skin_menu5"
+        android:title="스스로 몸을 핥아 털이 빠진다" />
+    <item
+        android:id="@+id/skin_menu6"
+        android:title="전신에 걸쳐서 털이 빠진다" />
+    <item
+        android:id="@+id/skin_menu7"
+        android:title="귀,등 부분을 긁거나 비듬이 생긴다" />
+    <item
+        android:id="@+id/skin_menu8"
+        android:title="앞다리를 자주 핥는다" />
+    <item
+        android:id="@+id/skin_menu9"
+        android:title="피부에 응어리가 만져진다" />
+</menu>

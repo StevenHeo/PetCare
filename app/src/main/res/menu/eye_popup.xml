@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/eye_menu0"
+        android:title="이상 없음" />
+    <item
+        android:id="@+id/eye_menu1"
+        android:title="눈이 빨갛게 부어있다" />
+    <item
+        android:id="@+id/eye_menu2"
+        android:title="흰자위나 눈꺼풀 안쪽이 붉다" />
+    <item
+        android:id="@+id/eye_menu3"
+        android:title="눈동자가 빨갛다" />
+    <item
+        android:id="@+id/eye_menu4"
+        android:title="각막이 붉다" />
+    <item
+        android:id="@+id/eye_menu5"
+        android:title="눈꺼풀 주위가 붉고 부종이 있다" />
+    <item
+        android:id="@+id/eye_menu6"
+        android:title="적갈색 눈물자국이 있다" />
+    <item
+        android:id="@+id/eye_menu7"
+        android:title="노란색/녹색 계열의 눈곱이 있다" />
+    <item
+        android:id="@+id/eye_menu8"
+        android:title="하얀색/갈색의 눈곱이 있다" />
+</menu>
