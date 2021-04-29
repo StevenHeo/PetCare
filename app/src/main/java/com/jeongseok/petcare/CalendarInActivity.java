@@ -1,15 +1,20 @@
 package com.jeongseok.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
 
 public class CalendarInActivity extends AppCompatActivity {
+
+
+
     private ImageView back_image;
     private TextView eye_textView;
     private TextView skin_textView;
@@ -18,8 +23,12 @@ public class CalendarInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_in);
-        back_image = (ImageView)findViewById(R.id.backbtn_image);
 
+        //캘린더
+        MaterialCalendarView materialCalendarView = findViewById(R.id.calendar);
+        materialCalendarView.setSelectedDate(CalendarDay.today());
+        
+        back_image = (ImageView)findViewById(R.id.backbtn_image);
         backButton(back_image);
 
         //입관련
