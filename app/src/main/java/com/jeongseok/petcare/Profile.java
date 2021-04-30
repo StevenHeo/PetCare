@@ -1,20 +1,36 @@
 package com.jeongseok.petcare;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+@Entity
 public class Profile {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     private String image;
     private String name;
-    private Date birthDay;
-    private boolean sex;
+    private String birthDay;
+    private String gender;
     private String breed;
 
-    public Profile(String image, String name, Date birthDay, boolean sex, String breed) {
+    public Profile(int id, String image, String name, String birthDay, String gender, String breed) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.birthDay = birthDay;
-        this.sex = sex;
+        this.gender = gender;
         this.breed = breed;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImage() {
@@ -33,20 +49,20 @@ public class Profile {
         this.name = name;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
-    public boolean isSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(boolean sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getBreed() {
