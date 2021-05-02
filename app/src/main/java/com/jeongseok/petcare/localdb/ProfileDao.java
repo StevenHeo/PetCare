@@ -1,4 +1,4 @@
-package com.jeongseok.petcare;
+package com.jeongseok.petcare.localdb;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -9,7 +9,7 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface PetCareDao {
+public interface ProfileDao {
     @Query("SELECT * FROM Profile")
     List<Profile> getAll();
 

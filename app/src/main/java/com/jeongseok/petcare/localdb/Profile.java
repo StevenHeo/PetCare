@@ -1,4 +1,4 @@
-package com.jeongseok.petcare;
+package com.jeongseok.petcare.localdb;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -12,11 +12,11 @@ public class Profile {
 
     private String image;
     private String name;
-    private String birthDay;
-    private String gender;
+    private Date birthDay;
+    private boolean gender;
     private String breed;
 
-    public Profile(int id, String image, String name, String birthDay, String gender, String breed) {
+    public Profile(int id, String image, String name, Date birthDay, boolean gender, String breed) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -49,19 +49,19 @@ public class Profile {
         this.name = name;
     }
 
-    public String getBirthDay() {
+    public Date getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(String birthDay) {
+    public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
 
-    public String getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
