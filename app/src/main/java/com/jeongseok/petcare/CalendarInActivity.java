@@ -2,6 +2,7 @@ package com.jeongseok.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +17,9 @@ public class CalendarInActivity extends AppCompatActivity {
 
 
     private ImageView back_image;
+    private ImageView eye_down;
+    private ImageView skin_down;
+    private ImageView mouth_down;
     private TextView eye_textView;
     private TextView skin_textView;
     private TextView mouth_textView;
@@ -24,15 +28,30 @@ public class CalendarInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_in);
 
-        //캘린더
-        MaterialCalendarView materialCalendarView = findViewById(R.id.calendar);
-        materialCalendarView.setSelectedDate(CalendarDay.today());
-        
         back_image = (ImageView)findViewById(R.id.backbtn_image);
+        eye_down = (ImageView)findViewById(R.id.eye_down);
+        skin_down = (ImageView)findViewById(R.id.skin_down);
+        mouth_down = (ImageView)findViewById(R.id.mouth_down);
+
         backButton(back_image);
 
+
+
+
         //입관련
-        findViewById(R.id.mouth_down).setOnClickListener(new View.OnClickListener() {
+        mouthState(mouth_down);
+        //피부관련
+        skinState(skin_down);
+        //eye관련
+        eyeState(eye_down);
+
+    }
+
+
+
+
+    private void mouthState(ImageView mouth_down){
+        mouth_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 final PopupMenu popupMenu = new PopupMenu(getApplicationContext(),view);
@@ -65,8 +84,10 @@ public class CalendarInActivity extends AppCompatActivity {
                 popupMenu.show();
             }
         });
-        //피부관련
-        findViewById(R.id.skin_down).setOnClickListener(new View.OnClickListener() {
+
+    }
+    private void skinState(ImageView skin_down){
+        skin_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 final PopupMenu popupMenu = new PopupMenu(getApplicationContext(),view);
@@ -113,8 +134,10 @@ public class CalendarInActivity extends AppCompatActivity {
                 popupMenu.show();
             }
         });
-        //eye관련
-        findViewById(R.id.eye_down).setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void eyeState(ImageView eye_down){
+        eye_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 final PopupMenu popupMenu = new PopupMenu(getApplicationContext(),view);
@@ -158,9 +181,7 @@ public class CalendarInActivity extends AppCompatActivity {
                 popupMenu.show();
             }
         });
-
     }
-
     private void backButton(ImageView back_image){
         back_image.setOnClickListener(new View.OnClickListener() {
             @Override
