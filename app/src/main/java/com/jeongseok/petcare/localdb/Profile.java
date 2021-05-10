@@ -13,7 +13,7 @@ public class Profile {
     private String image;
     private String name;
     private Date birthDay;
-    private boolean gender;
+    private boolean gender; // 0: M, 1: F
     private String breed;
 
     public Profile(String image, String name, Date birthDay, boolean gender, String breed) {

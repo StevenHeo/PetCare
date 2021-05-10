@@ -100,21 +100,20 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
-                android:id="@+id/name_editText"
+                android:id="@+id/name_editText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="right"
+                android:hint="John"
+                android:inputType="text"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="John"
-                android:textColorHint="#f08e76"
-                android:inputType="text"
-                />
+                android:textStyle="normal" />
         </LinearLayout>
 
         <ImageView
@@ -137,20 +136,21 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
+                android:maxLength="6"
+                android:id="@+id/birthday_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="end"
+                android:hint="210101"
+                android:inputType="date"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="2002/02/13"
-                android:textColorHint="#f08e76"
-                android:inputType="date"
-                />
+                android:textStyle="normal" />
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
@@ -167,68 +167,33 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:lineSpacingExtra="1sp"
-                android:text="SEX"
+                android:text="GENDER"
                 android:textColor="#bebebe"
                 android:textSize="13sp"
-                android:textStyle="bold"
-              />
+                android:textStyle="bold" />
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
+                android:maxLength="1"
+                android:id="@+id/gender_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="end"
-                android:lineSpacingExtra="6sp"
-                android:textColor="#f08e76"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="Male"
-                android:textColorHint="#f08e76"
+                android:hint="M / F"
                 android:inputType="text"
-                />
-        </LinearLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/line_icon" />
-        <LinearLayout
-            android:layout_marginTop="29dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:lineSpacingExtra="1sp"
-                android:text="BURTHDAY"
-                android:textColor="#bebebe"
-                android:textSize="13sp"
-                android:textStyle="bold"/>
-
-            <EditText
-                android:layout_weight="8"
-                android:background="@null"
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="end"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="1987/09/09"
-                android:textColorHint="#f08e76"
-                android:inputType="date"
-                />
+                android:textStyle="normal" />
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/line_icon" />
+
         <LinearLayout
             android:layout_marginTop="29dp"
             android:layout_width="match_parent"
@@ -245,26 +210,41 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
+                android:id="@+id/breed_editText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="right"
+                android:hint="German Shepherd"
+                android:inputType="text"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="German Shepherd"
-                android:textColorHint="#f08e76"
-                android:inputType="text"
-                />
+                android:textStyle="normal" />
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/line_icon" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="1sp"
+        android:textColor="#FA6F6F"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/profile_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/profile_button"
