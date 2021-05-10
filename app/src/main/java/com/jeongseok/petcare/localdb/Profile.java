@@ -16,8 +16,7 @@ public class Profile {
     private boolean gender;
     private String breed;
 
-    public Profile(int id, String image, String name, Date birthDay, boolean gender, String breed) {
-        this.id = id;
+    public Profile(String image, String name, Date birthDay, boolean gender, String breed) {
         this.image = image;
         this.name = name;
         this.birthDay = birthDay;
