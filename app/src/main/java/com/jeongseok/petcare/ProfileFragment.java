@@ -24,9 +24,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_profile, container, false);
         //db테스트
-        TextView textView = v.findViewById(R.id.profileTextView);
+        //TextView textView = v.findViewById(R.id.profileTextView);
         initLoadDB();
-        textView.setText(dogDiseaseList.get(1).result1);
+        //textView.setText(dogDiseaseList.get(1).result1);
         return v;
 
     }
