@@ -53,6 +53,8 @@
             android:src="@drawable/dog_img" />
 
         <ImageView
+            android:id="@+id/edit_btn"
+            android:padding="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="310dp"

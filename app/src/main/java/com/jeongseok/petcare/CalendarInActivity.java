@@ -1,13 +1,18 @@
 package com.jeongseok.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+
+import com.jeongseok.petcare.localdbPet.DataAdapter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
@@ -20,6 +25,7 @@ public class CalendarInActivity extends AppCompatActivity {
     private ImageView eye_down;
     private ImageView skin_down;
     private ImageView mouth_down;
+    private Button save_btn;
     private TextView eye_textView;
     private TextView skin_textView;
     private TextView mouth_textView;
@@ -32,9 +38,10 @@ public class CalendarInActivity extends AppCompatActivity {
         eye_down = (ImageView)findViewById(R.id.eye_down);
         skin_down = (ImageView)findViewById(R.id.skin_down);
         mouth_down = (ImageView)findViewById(R.id.mouth_down);
+        save_btn = (Button)findViewById(R.id.calendarSave_btn);
 
         backButton(back_image);
-
+        setSaveButton(save_btn);
 
 
 
@@ -48,7 +55,16 @@ public class CalendarInActivity extends AppCompatActivity {
     }
 
 
+    private void setSaveButton(Button save_btn){
+        save_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next_intent = new Intent(getApplicationContext(),TipActivity.class);
+                startActivity(next_intent);
 
+            }
+        });
+    }
 
     private void mouthState(ImageView mouth_down){
         mouth_down.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +102,7 @@ public class CalendarInActivity extends AppCompatActivity {
         });
 
     }
+
     private void skinState(ImageView skin_down){
         skin_down.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,6 +203,7 @@ public class CalendarInActivity extends AppCompatActivity {
         back_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 onBackPressed();
             }
         });

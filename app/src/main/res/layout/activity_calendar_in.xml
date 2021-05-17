@@ -335,14 +335,14 @@
             android:textColor="#5c5c5c"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/profile_button"
+            app:layout_constraintBottom_toTopOf="@+id/calendarSave_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
 
         <Button
-            android:id="@+id/profile_button"
+            android:id="@+id/calendarSave_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
