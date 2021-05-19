@@ -44,24 +44,12 @@ public class ProfileActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        Toast.makeText(getApplicationContext(), "확인1: " + db.profileDao().getAll().toString() + " 확인2: " + db.healthDataDao().getAll().toString(), Toast.LENGTH_SHORT).show();
         backButton(back_image);
 
-        Log.d("test", "onCreate: " + nameEditText.getText().toString());
         next_btn = (Button)findViewById(R.id.profile_button);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //////////////////////////
-                //Test Code(have to delete)
-                int test = 1;
-                if(test == 1){
-                    Intent next_intent1 = new Intent(ProfileActivity.this, HomeActivity.class);
-                    startActivity(next_intent1);
-                    return;
-                }
-                ///////////////////////////
-
                 //Empty Check
                 if(nameEditText.getText().toString().isEmpty()){
                     errorTextView.setText("이름을 입력해주세요");
@@ -92,9 +80,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                 //Gender Check
                 boolean gender;
-                if(genderEditText.getText().toString().matches("M")){
+                if(genderEditText.getText().toString().matches("M") || genderEditText.getText().toString().matches("m")){
                     gender = false;
-                } else if(genderEditText.getText().toString().matches("F")){
+                } else if(genderEditText.getText().toString().matches("F") || genderEditText.getText().toString().matches("f")){
                     gender = true;
                 }else{
                     errorTextView.setText("성별 입력 값을 확인해주세요");
@@ -104,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
                 db.profileDao().insert(new Profile("image URL", name, date,gender, breed));
 
                 Intent next_intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                finishAffinity();
                 startActivity(next_intent);
             }
         });
