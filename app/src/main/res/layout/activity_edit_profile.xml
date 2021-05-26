@@ -170,11 +170,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:lineSpacingExtra="1sp"
-                android:text="SEX"
+                android:text="GENDER"
                 android:textColor="#bebebe"
                 android:textSize="13sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <EditText
                 android:layout_weight="8"
@@ -196,42 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/line_icon" />
-        <LinearLayout
-            android:layout_marginTop="29dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:lineSpacingExtra="1sp"
-                android:text="BURTHDAY"
-                android:textColor="#bebebe"
-                android:textSize="13sp"
-                android:textStyle="bold"/>
 
-            <EditText
-                android:layout_weight="8"
-                android:background="@null"
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="end"
-                android:lineSpacingExtra="6sp"
-                android:textColor="#f08e76"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="1987/09/09"
-                android:textColorHint="#f08e76"
-                android:inputType="date"
-                />
-        </LinearLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/line_icon" />
         <LinearLayout
             android:layout_marginTop="29dp"
             android:layout_width="match_parent"
