@@ -69,7 +69,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/dog_img" />
+            android:src="@drawable/profile_icon" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
             <EditText
                 android:layout_weight="8"
                 android:background="@null"
-                android:id="@+id/name_editText"
+                android:id="@+id/name1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -140,20 +140,20 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
+                android:id="@+id/birthday1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="end"
+                android:hint="210101"
+                android:inputType="date"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="2002/02/13"
                 android:textColorHint="#f08e76"
-                android:inputType="date"
-                />
+                android:textSize="20sp"
+                android:textStyle="normal" />
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
@@ -176,20 +176,20 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
+                android:id="@+id/gender1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="end"
+                android:hint="M / F"
+                android:inputType="text"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="Male"
                 android:textColorHint="#f08e76"
-                android:inputType="text"
-                />
+                android:textSize="20sp"
+                android:textStyle="normal" />
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
@@ -212,26 +212,40 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:layout_weight="8"
-                android:background="@null"
+                android:id="@+id/breed1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@null"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="right"
+                android:hint="German Shepherd"
+                android:inputType="text"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                android:hint="German Shepherd"
                 android:textColorHint="#f08e76"
-                android:inputType="text"
-                />
+                android:textSize="20sp"
+                android:textStyle="normal" />
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/line_icon" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/error1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="1sp"
+        android:textColor="#FA6F6F"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editSave_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/editSave_btn"

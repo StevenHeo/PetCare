@@ -69,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
                 String breed = breedEditText.getText().toString();
 
                 //Date Check
-                SimpleDateFormat sd = new SimpleDateFormat("YYmmdd", Locale.ENGLISH);
+                SimpleDateFormat sd = new SimpleDateFormat("yyMMdd", Locale.KOREA);
                 Date date;
                 try {
                     date = sd.parse(birthdayEditText.getText().toString());
