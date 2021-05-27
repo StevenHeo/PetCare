@@ -11,7 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
+import com.jeongseok.petcare.localdb.AppDataBase;
+import com.jeongseok.petcare.localdb.Profile;
 import com.jeongseok.petcare.localdbPet.DataAdapter;
 import com.jeongseok.petcare.localdbPet.dogDisease;
 
@@ -34,21 +37,24 @@ public class ProfileFragment extends Fragment {
                 startActivity(next_intent);
             }
         });
-        //db테스트
-        //TextView textView = v.findViewById(R.id.profileTextView);
-        initLoadDB();
-        //textView.setText(dogDiseaseList.get(1).result1);
+
+        final AppDataBase db = Room.databaseBuilder(this, AppDataBase.class, "petcare-db" )
+                .allowMainThreadQueries()
+                .build();
+
+        Profile p = db.profileDao().getAll().get(0);
+
+        TextView name = v.findViewById(R.id.fp_name);
+        TextView gender = v.findViewById(R.id.fp_gender);
+        TextView breed = v.findViewById(R.id.fp_breed);
+        TextView birthday = v.findViewById(R.id.fp_birthday);
+
+        name.setText(p.getName());
+        gender.setText(p.getGender() ? "MALE" : "FEMALE");
+        breed.setText(p.getBreed());
+        birthday.setText(p.getBirthDay().toString());
+
         return v;
-
-    }
-    private void initLoadDB() {
-
-        DataAdapter mDbHelper = new DataAdapter(this.getContext());
-        mDbHelper.createDatabase();
-        mDbHelper.open();
-        dogDiseaseList = mDbHelper.getTableData();
-
-        mDbHelper.close();
     }
 
 }
