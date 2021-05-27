@@ -1,5 +1,8 @@
 package com.jeongseok.petcare.localdbPet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class dogDisease {
     public int idx;
     public String disease;
@@ -8,6 +11,16 @@ public class dogDisease {
     public String result1;
     public String result2;
     public String tip;
+
+    private dogDisease dogDisease=null;
+
+    private static dogDisease dogVO = new dogDisease();
+
+    public static dogDisease getInstance(){
+        if(dogVO ==null)
+            dogVO = new dogDisease();
+        return dogVO;
+    }
 
     @Override
     public String toString() {
@@ -21,7 +34,6 @@ public class dogDisease {
                 ", tip='" + tip + '\'' +
                 '}';
     }
-
     public int getIdx() {
         return idx;
     }

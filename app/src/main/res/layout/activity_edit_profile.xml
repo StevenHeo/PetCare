@@ -9,23 +9,14 @@
 
 
 
-    <ImageView
-        android:id="@+id/backbtn_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:src="@drawable/icn_back_dark"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+
 
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal"
         android:letterSpacing="-0.02"

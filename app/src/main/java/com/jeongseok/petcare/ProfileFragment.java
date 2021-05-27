@@ -19,7 +19,6 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment {
     private View v;
-    public List<dogDisease> dogDiseaseList;
     private ImageView edit_btn;
 
     @Nullable
@@ -34,21 +33,9 @@ public class ProfileFragment extends Fragment {
                 startActivity(next_intent);
             }
         });
-        //db테스트
-        //TextView textView = v.findViewById(R.id.profileTextView);
-        initLoadDB();
-        //textView.setText(dogDiseaseList.get(1).result1);
+
         return v;
 
-    }
-    private void initLoadDB() {
-
-        DataAdapter mDbHelper = new DataAdapter(this.getContext());
-        mDbHelper.createDatabase();
-        mDbHelper.open();
-        dogDiseaseList = mDbHelper.getTableData();
-
-        mDbHelper.close();
     }
 
 }

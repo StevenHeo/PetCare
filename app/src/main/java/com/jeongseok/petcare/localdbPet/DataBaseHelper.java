@@ -17,7 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
     private static String TAG = "DataBaseHelper";
 
     private static String DB_PATH = "";
-    private static String DB_NAME ="dogDisease.db";
+    private static String DB_NAME ="dog_Disease.db";
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ears_menu0"
+        android:title="황갈색 귀지" />
+    <item
+        android:id="@+id/ears_menu1"
+        android:title="고름이 묻어있다." />
+    <item
+        android:id="@+id/ears_menu2"
+        android:title="흑갈색,검은색의 눅눅한 귀지" />
+    <item
+        android:id="@+id/ears_menu3"
+        android:title="흑갈색,검은색의 마른 귀지" />
+    <item
+        android:id="@+id/ears_menu4"
+        android:title="흰색 귀지" />
+    <item
+        android:id="@+id/ears_menu5"
+        android:title="연노랑색 귀지" />
+    <item
+        android:id="@+id/ears_menu6"
+        android:title="갈색,회색의 기름 때" />
+    <item
+        android:id="@+id/ears_menu7"
+        android:title="빨갛게 부어올랐다." />
+    <item
+        android:id="@+id/ears_menu8"
+        android:title="과일 냄새가 난다." />
+</menu>

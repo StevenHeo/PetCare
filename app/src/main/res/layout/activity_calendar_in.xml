@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:src="@drawable/down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:src="@drawable/down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView9" />
@@ -178,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:src="@drawable/down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView11" />
@@ -219,7 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:src="@drawable/down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView8" />
@@ -260,7 +260,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:src="@drawable/down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView10" />
@@ -274,7 +274,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:lineSpacingExtra="1sp"
                 android:padding="5dp"
-                android:text="Etc"
+                android:text="Ears"
                 android:textColor="#bebebe"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -282,7 +282,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/ears_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -293,15 +293,15 @@
             android:textColor="#f08e76"
             android:textSize="20sp"
             android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/imageView8"
-            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+            app:layout_constraintEnd_toStartOf="@+id/ears_down"
+            app:layout_constraintTop_toTopOf="@+id/ears_down" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/ears_down"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:src="@drawable/down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView13" />
