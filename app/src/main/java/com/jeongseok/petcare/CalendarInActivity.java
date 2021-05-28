@@ -56,7 +56,6 @@ public class CalendarInActivity extends AppCompatActivity {
 
         save_btn = (Button)findViewById(R.id.calendarSave_btn);
 
-        backButton(back_image);
         setSaveButton(save_btn);
 
         //입관련
@@ -306,13 +305,5 @@ public class CalendarInActivity extends AppCompatActivity {
             }
         });
     }
-    private void backButton(ImageView back_image){
-        back_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                onBackPressed();
-            }
-        });
-    }
 }

@@ -41,25 +41,21 @@ public class CalendarFragment extends Fragment {
         materialCalendarView.setDynamicHeightEnabled(true);
         materialCalendarView.setSelectedDate(CalendarDay.today());
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+            int check =0;
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-
                 ArrayList<CalendarDay> calendarDayList = new ArrayList<>();
                 calendarDayList.add(date);
-
                 EventDecorator eventDecorator = new EventDecorator(Color.BLACK,calendarDayList,getActivity());
-
                 materialCalendarView.addDecorators(eventDecorator);
+                check++;
+                if(check==1) {
+                    Intent next_intent = new Intent(getActivity(), CalendarInActivity.class);
+                    startActivity(next_intent);
 
-                Intent next_intent = new Intent(getActivity(),CalendarInActivity.class);
-                startActivity(next_intent);
+                }
             }
         });
-
-
-
-
-
 
 
         return v;
