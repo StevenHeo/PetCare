@@ -1,8 +1,10 @@
 package com.jeongseok.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
@@ -20,12 +22,11 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import java.util.ArrayList;
 import java.util.List;
 
+import petrov.kristiyan.colorpicker.ColorPicker;
+
 public class CalendarInActivity extends AppCompatActivity {
-
-
-
-
-    private ImageView back_image;
+    private CardView poo_img;
+    private ImageView poo_down;
     private ImageView eye_down;
     private ImageView skin_down;
     private ImageView mouth_down;
@@ -35,29 +36,28 @@ public class CalendarInActivity extends AppCompatActivity {
     private TextView skin_textView;
     private TextView mouth_textView;
     private TextView ears_textView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_in);
 
-        //테스트 지우기
         DataAdapter mDbHelper = new DataAdapter(this);
         mDbHelper.createDatabase();
         mDbHelper.open();
         mDbHelper.deleteMyTipTable();
         mDbHelper.close();
 
-
-        back_image = (ImageView)findViewById(R.id.backbtn_image);
-        eye_down = (ImageView)findViewById(R.id.eye_down);
-        skin_down = (ImageView)findViewById(R.id.skin_down);
-        mouth_down = (ImageView)findViewById(R.id.mouth_down);
-        ears_down = (ImageView)findViewById(R.id.ears_down);
-
-        save_btn = (Button)findViewById(R.id.calendarSave_btn);
+        poo_img =(CardView)findViewById(R.id.poo_img);
+        eye_down = (ImageView) findViewById(R.id.eye_down);
+        skin_down = (ImageView) findViewById(R.id.skin_down);
+        mouth_down = (ImageView) findViewById(R.id.mouth_down);
+        ears_down = (ImageView) findViewById(R.id.ears_down);
+        poo_down=(ImageView)findViewById(R.id.poo_down);
+        save_btn = (Button) findViewById(R.id.calendarSave_btn);
 
         setSaveButton(save_btn);
-
         //입관련
         mouthState(mouth_down);
         //피부관련
@@ -66,12 +66,17 @@ public class CalendarInActivity extends AppCompatActivity {
         eyeState(eye_down);
         //ears관련
         earsState(ears_down);
+        //poo 관련
+        poo_down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openColorPicker();
 
+            }
+        });
 
 
     }
-
-
     private void setDBTip(String str, int idx) {
         DataAdapter mDbHelper = new DataAdapter(this);
         mDbHelper.createDatabase();
@@ -79,7 +84,39 @@ public class CalendarInActivity extends AppCompatActivity {
         mDbHelper.insertMyTipTable(str,idx);
         mDbHelper.close();
     }
+    public void openColorPicker() {
+        final ColorPicker colorPicker = new ColorPicker(this);
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("#997000");
+        colors.add("#A6A6A6");
+        colors.add("#000000");
+        colors.add("#BA2B2B");
+        colors.add("#8FBD24");
+        colors.add("#F2CB61");
+        colors.add("#FF8224");
+        colors.add("#FFFFFF");
+        colors.add("#660058");
+        colors.add("#C05AB2");
+        colorPicker.setColors(colors)
+                .setDefaultColorButton(R.color.pink)
+                .setTitle("변 색깔과 비슷한 것을 골라주세요!!")
+                .setColumns(5)
+                .setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
+                    @Override
+                    public void onChooseColor(int position, int color) {
+                        poo_img.setBackgroundColor(color);
+                     if(color==8||color==9) {
+                         setDBTip("poo", position + 10);
+                     }else{
+                         setDBTip("poo", position + 1);
+                     }
+                    }
+                    @Override
+                    public void onCancel() {
 
+                    }
+                }).show();
+    }
 
     private void setSaveButton(Button save_btn){
         save_btn.setOnClickListener(new View.OnClickListener() {

@@ -7,7 +7,7 @@
     <TextView
         android:layout_marginLeft="21dp"
         android:layout_marginTop="6dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
@@ -30,6 +30,7 @@
     app:mcv_tileHeight="match_parent"
     app:mcv_dateTextAppearance="@color/black"
     app:mcv_showOtherDates="all"/>
+
 
 
 </LinearLayout>

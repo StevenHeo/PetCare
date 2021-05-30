@@ -68,10 +68,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/tip_RecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/tipCheck_btn" />
 
+
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 
