@@ -42,33 +42,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
+                android:layout_weight="1"
+                android:id="@+id/doctorText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="13dp"
                 android:layout_marginBottom="11dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="6sp"
-                android:text="조금 나쁨"
+                android:text="\n\n\nPetCare가 처음이신가요?"
                 android:textColor="#f08e76"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <ImageView
+                android:layout_weight="1"
+                android:id="@+id/doctorIcon"
                 android:layout_width="73dp"
                 android:layout_height="71dp"
                 android:layout_marginLeft="140dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/normal_ic" />
+                android:src="@drawable/logo" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_weight="8"
                 android:id="@+id/tip_RecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toTopOf="@+id/tipCheck_btn" />
 
 
