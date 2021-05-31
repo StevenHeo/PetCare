@@ -23,9 +23,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="353dp"
-        android:layout_height="443dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="357dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="29dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
@@ -54,11 +54,11 @@
 
         <ImageView
             android:id="@+id/edit_btn"
-            android:padding="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="310dp"
             android:layout_marginTop="11dp"
+            android:padding="2dp"
             android:src="@drawable/edit_icon" />
 
         <TextView
@@ -99,6 +99,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fp_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
@@ -129,6 +130,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fp_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
@@ -153,12 +155,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
                     android:lineSpacingExtra="1sp"
-                    android:text="SEX"
+                    android:text="GENDER"
                     android:textColor="#bebebe"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fp_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
@@ -182,41 +185,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
                     android:lineSpacingExtra="1sp"
-                    android:text="BURTHDAY"
-                    android:textColor="#bebebe"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="8"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="6sp"
-                    android:text="1987 / 09 / 09"
-                    android:textColor="#f08e76"
-                    android:textSize="20sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:lineSpacingExtra="1sp"
                     android:text="BREED"
                     android:textColor="#bebebe"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fp_breed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
