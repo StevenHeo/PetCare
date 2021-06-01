@@ -117,7 +117,7 @@
                 android:textSize="20sp"
                 android:textStyle="normal"
                 android:hint="John"
-                android:textColorHint="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:inputType="text"
                 />
         </LinearLayout>
@@ -142,6 +142,7 @@
                 android:textStyle="bold"/>
 
             <EditText
+                android:maxLength="6"
                 android:id="@+id/birthday1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -153,7 +154,7 @@
                 android:inputType="date"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
-                android:textColorHint="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -178,6 +179,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:maxLength="1"
                 android:id="@+id/gender1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -189,7 +191,7 @@
                 android:inputType="text"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
-                android:textColorHint="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -225,7 +227,7 @@
                 android:inputType="text"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#f08e76"
-                android:textColorHint="#f08e76"
+                android:textColorHint="#80F08E76"
                 android:textSize="20sp"
                 android:textStyle="normal" />
         </LinearLayout>
