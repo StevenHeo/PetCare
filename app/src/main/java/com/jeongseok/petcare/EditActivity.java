@@ -1,7 +1,10 @@
 package com.jeongseok.petcare;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,21 +19,32 @@ import androidx.room.Room;
 import com.jeongseok.petcare.localdb.AppDataBase;
 import com.jeongseok.petcare.localdb.Profile;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditActivity extends AppCompatActivity {
 
+    private static final int PICK_IMAGE = 100;
+    private Uri uri;
+    private Bitmap bitmap = null;
     private Button editButton;
     private ImageView backButton;
+    private ImageView buttonImgView;
+    private CircleImageView profileImgView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         editButton = (Button)findViewById(R.id.editSave_btn);
         backButton = (ImageView)findViewById(R.id.edit_backbtn_image);
+        buttonImgView = (ImageView)findViewById(R.id.add_profile_e);
+        profileImgView = (CircleImageView)findViewById(R.id.profile_img_view_e);
 
         EditText nameEditText = findViewById(R.id.name1);
         EditText birthdayEditText = findViewById(R.id.birthday1);
@@ -44,6 +58,13 @@ public class EditActivity extends AppCompatActivity {
 
         int id = db.profileDao().getAll().get(0).getId();
 
+        buttonImgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGallery();
+            }
+        });
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +75,7 @@ public class EditActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //Empty Check
                 if(nameEditText.getText().toString().isEmpty()){
                     errorTextView.setText("이름을 입력해주세요");
@@ -92,13 +114,37 @@ public class EditActivity extends AppCompatActivity {
                     errorTextView.setText("성별 입력 값을 확인해주세요");
                     return;
                 }
-                Log.d("edit", date.toString());
-                Profile editProfile = new Profile("image URL", name, date,gender, breed);
+
+                Profile editProfile = new Profile(bitmap, name, date,gender, breed);
                 editProfile.setId(id);
                 db.profileDao().update(editProfile);
 
                 onBackPressed();
             }
         });
+    }
+
+    private void openGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && data != null && data.getData() != null){
+            uri = data.getData();
+            try {
+                bitmap =  MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if(bitmap != null){
+                profileImgView.setImageBitmap(bitmap);
+            }
+        }
     }
 }

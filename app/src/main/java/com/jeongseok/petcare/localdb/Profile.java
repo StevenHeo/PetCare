@@ -1,5 +1,7 @@
 package com.jeongseok.petcare.localdb;
 
+import android.graphics.Bitmap;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,13 +12,13 @@ public class Profile {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String image;
+    private Bitmap image;
     private String name;
     private Date birthDay;
     private boolean gender; // 0: M, 1: F
     private String breed;
 
-    public Profile(String image, String name, Date birthDay, boolean gender, String breed) {
+    public Profile(Bitmap image, String name, Date birthDay, boolean gender, String breed) {
         this.image = image;
         this.name = name;
         this.birthDay = birthDay;
@@ -32,11 +34,11 @@ public class Profile {
         this.id = id;
     }
 
-    public String getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 
