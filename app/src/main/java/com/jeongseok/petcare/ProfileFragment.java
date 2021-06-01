@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +40,7 @@ public class ProfileFragment extends Fragment {
     private TextView gender;
     private TextView breed;
     private TextView birthday;
+    private ToggleButton toggle;
 
     private AppDataBase db;
 
@@ -53,6 +56,14 @@ public class ProfileFragment extends Fragment {
         gender = v.findViewById(R.id.fp_gender);
         breed = v.findViewById(R.id.fp_breed);
         birthday = v.findViewById(R.id.fp_birthday);
+        toggle = v.findViewById(R.id.toggle);
+
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                NotificationReceiver.flag = b;
+            }
+        });
 
         db = Room.databaseBuilder(getContext(), AppDataBase.class, "petcare-db" )
                 .allowMainThreadQueries()

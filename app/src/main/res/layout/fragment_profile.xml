@@ -251,6 +251,7 @@
             android:layout_marginTop="17dp"
             />
         <ToggleButton
+            android:id="@+id/toggle"
             android:layout_width="40dp"
             android:layout_height="24dp"
             android:background="@drawable/toggle_selector"
