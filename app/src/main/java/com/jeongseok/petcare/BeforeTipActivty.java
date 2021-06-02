@@ -63,7 +63,8 @@ public class BeforeTipActivty  extends FragmentActivity {
         mDbHelper.open();
         myTipDiseaseList = mDbHelper.selectMyTipList(selectday);
 
-        Log.i("image", myTipDiseaseList.get(0).getImage());
+        Log.d("image1", myTipDiseaseList.get(0).getImage());
+
         getDoctor(myTipDiseaseList.get(0).getImage());
         memoText.setText(myTipDiseaseList.get(0).getMemo());
         ArrayList<ItemTip> list = new ArrayList<>();
@@ -71,7 +72,7 @@ public class BeforeTipActivty  extends FragmentActivity {
                 list.add(new ItemTip(myTipDiseaseList.get(i).getDisease(), myTipDiseaseList.get(i).getResult1(), myTipDiseaseList.get(i).getResult2(), myTipDiseaseList.get(i).getTip()));
             }
         mDbHelper.close();
-        Log.i("list", myTipDiseaseList.toString());
+        Log.d("list1", myTipDiseaseList.toString());
         tipAdapter = new TipAdapter(this,list);
         recyclerView.setAdapter(tipAdapter);
 
@@ -86,7 +87,7 @@ public class BeforeTipActivty  extends FragmentActivity {
     }
 
     public void getDoctor(String str){
-        Log.i("image", str);
+        Log.d("image1", str);
         if( str.equals("좋음")){
             bf_doctorImg.setImageResource(R.drawable.good_ic);
             bf_doctorText.setText(str);
