@@ -64,6 +64,7 @@ public class TipActivity extends FragmentActivity {
         mDbHelper.createDatabase();
         mDbHelper.open();
         dogDiseaseList = mDbHelper.selectMyTipTable(day);
+        Log.i("list", dogDiseaseList.toString());
         ArrayList<ItemTip> list = new ArrayList<>();
        if(dogDiseaseList.size()==0){
            list.add(new ItemTip("\n상태 진단을 원하신다면?","강아지의 현재 상태를 선택해주세요","상태 진단해 드릴게요!",""));

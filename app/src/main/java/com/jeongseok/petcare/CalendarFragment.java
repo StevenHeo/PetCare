@@ -16,12 +16,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.jeongseok.petcare.localdbPet.DataAdapter;
+import com.jeongseok.petcare.localdbPet.myTipDisease;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class CalendarFragment extends Fragment {
@@ -38,13 +40,22 @@ public class CalendarFragment extends Fragment {
         materialCalendarView.setDynamicHeightEnabled(true);
         materialCalendarView.setSelectedDate(CalendarDay.today());
 
-        //캘린더 팁 초기화 코드 -> 주석풀고 실행 후 -> 다시실행할때는 주석처리
+//        //캘린더 팁 초기화 코드 -> 주석풀고 실행 후 -> 다시실행할때는 주석처리
+//        DataAdapter mDbHelper = new DataAdapter(getContext());
+//        mDbHelper.createDatabase();
+//        mDbHelper.open();
+//        mDbHelper.deleteMyTipTable();
+//        mDbHelper.close();
+//        //
+
         DataAdapter mDbHelper = new DataAdapter(getContext());
         mDbHelper.createDatabase();
         mDbHelper.open();
-        mDbHelper.deleteMyTipTable();
+        List<myTipDisease> myTipDisease;
+        myTipDisease =  mDbHelper.selectMyTipTable();
+
         mDbHelper.close();
-        //
+        Log.i("Lisasdat", myTipDisease.toString());
 
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
 

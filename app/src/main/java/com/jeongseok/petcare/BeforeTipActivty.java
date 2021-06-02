@@ -61,8 +61,8 @@ public class BeforeTipActivty  extends FragmentActivity {
         DataAdapter mDbHelper = new DataAdapter(this);
         mDbHelper.createDatabase();
         mDbHelper.open();
-
         myTipDiseaseList = mDbHelper.selectMyTipList(selectday);
+
         Log.i("image", myTipDiseaseList.get(0).getImage());
         getDoctor(myTipDiseaseList.get(0).getImage());
         memoText.setText(myTipDiseaseList.get(0).getMemo());
