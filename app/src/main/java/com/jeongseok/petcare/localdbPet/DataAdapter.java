@@ -95,6 +95,42 @@ public class DataAdapter
 
     }
 
+    public List getAllElements() {
+
+        List dateTipList = new ArrayList();
+        myTipDisease myTipDisease = null;
+
+        String selectQuery = "SELECT  * FROM myTipDisease";
+
+
+            Cursor mCur = mDb.rawQuery(selectQuery, null);
+            try {
+                if (mCur.moveToFirst()) {
+                    do {
+                        myTipDisease = new myTipDisease();
+                        myTipDisease.setDisease(mCur.getString(0));
+                        myTipDisease.setCurrentState(mCur.getString(1));
+                        myTipDisease.setResult1(mCur.getString(2));
+                        myTipDisease.setResult2(mCur.getString(3));
+                        myTipDisease.setTip(mCur.getString(4));
+                        myTipDisease.setMemo(mCur.getString(5));
+                        myTipDisease.setImage(mCur.getString(6));
+                        myTipDisease.setTipTime(mCur.getString(8));
+
+                        dateTipList.add(myTipDisease);
+                    } while (mCur.moveToNext());
+                }
+
+            } finally {
+                try { mCur.close(); } catch (Exception ignore) {}
+            }
+
+            return dateTipList;
+
+    }
+
+
+
     public List selectMyTipList(String selectday){
         try{
             Log.v("dbFile1", selectday.toString());
@@ -111,6 +147,7 @@ public class DataAdapter
                     myTipDisease.setTip(mCur.getString(4));
                     myTipDisease.setMemo(mCur.getString(5));
                     myTipDisease.setImage(mCur.getString(6));
+                    myTipDisease.setTipTime(mCur.getString(8));
 
                     dateTipList.add(myTipDisease);
                 }

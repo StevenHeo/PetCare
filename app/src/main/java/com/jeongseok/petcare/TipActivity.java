@@ -99,9 +99,12 @@ public class TipActivity extends FragmentActivity {
         }else if(score>=40){
             imageView.setImageResource(R.drawable.normal_ic);
             str="보통";
-        }else if(score>=2) {
+        }else if(score >=0) {
             imageView.setImageResource(R.drawable.bad_ic);
             str = "나쁨";
+        }else{
+            imageView.setImageResource(R.drawable.normal_ic);
+            str="보통";
         }
         textView.setText(str);
         return str;
