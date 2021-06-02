@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class dogDisease {
-    public int idx;
     public String disease;
     public int diseaseId;
     public String currentState;
@@ -25,21 +24,13 @@ public class dogDisease {
     @Override
     public String toString() {
         return "dogDisease{" +
-                "idx=" + idx +
-                ", disease='" + disease + '\'' +
+                " disease='" + disease + '\'' +
                 ", diseaseId=" + diseaseId +
                 ", currentState='" + currentState + '\'' +
                 ", result1='" + result1 + '\'' +
                 ", result2='" + result2 + '\'' +
                 ", tip='" + tip + '\'' +
                 '}';
-    }
-    public int getIdx() {
-        return idx;
-    }
-
-    public void setIdx(int idx) {
-        this.idx = idx;
     }
 
     public String getDisease() {
@@ -56,10 +47,6 @@ public class dogDisease {
 
     public void setDiseaseId(int diseaseId) {
         this.diseaseId = diseaseId;
-    }
-
-    public String getCurrentState() {
-        return currentState;
     }
 
     public void setCurrentState(String currentState) {

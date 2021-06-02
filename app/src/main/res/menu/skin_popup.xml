@@ -23,7 +23,7 @@
         android:title="전신에 걸쳐서 털이 빠진다" />
     <item
         android:id="@+id/skin_menu7"
-        android:title="귀,등 부분을 긁거나 비듬이 생긴다" />
+        android:title="귀,등을 긁거나 비듬이 생긴다" />
     <item
         android:id="@+id/skin_menu8"
         android:title="앞다리를 자주 핥는다" />

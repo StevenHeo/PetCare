@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import java.util.List;
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class CalendarInActivity extends AppCompatActivity {
+
     private CardView poo_img;
     private int[] healthScore ={1,1,1,1,1};
     private int idx;
@@ -38,18 +40,13 @@ public class CalendarInActivity extends AppCompatActivity {
     private TextView skin_textView;
     private TextView mouth_textView;
     private TextView ears_textView;
-
+    private EditText memo_textView;
+    private String selectday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_in);
-
-        DataAdapter mDbHelper = new DataAdapter(this);
-        mDbHelper.createDatabase();
-        mDbHelper.open();
-        mDbHelper.deleteMyTipTable();
-        mDbHelper.close();
 
         poo_img =(CardView)findViewById(R.id.poo_img);
         eye_down = (ImageView) findViewById(R.id.eye_down);
@@ -58,7 +55,10 @@ public class CalendarInActivity extends AppCompatActivity {
         ears_down = (ImageView) findViewById(R.id.ears_down);
         poo_down=(ImageView)findViewById(R.id.poo_down);
         save_btn = (Button) findViewById(R.id.calendarSave_btn);
+        memo_textView=(EditText)findViewById(R.id.memoTv);
 
+        Intent intent = getIntent();
+        selectday = intent.getExtras().getString("selectday");
         setSaveButton(save_btn);
         mouthState(mouth_down);
         skinState(skin_down);
@@ -78,7 +78,7 @@ public class CalendarInActivity extends AppCompatActivity {
         DataAdapter mDbHelper = new DataAdapter(this);
         mDbHelper.createDatabase();
         mDbHelper.open();
-        mDbHelper.insertMyTipTable(str,idx);
+        mDbHelper.insertMyTipTable(str,idx,selectday);
         mDbHelper.close();
     }
     public void PooState() {
@@ -103,11 +103,7 @@ public class CalendarInActivity extends AppCompatActivity {
                     public void onChooseColor(int position, int color) {
                         poo_img.setBackgroundColor(color);
                         idx=position;
-                     if(color==8||color==9) {
-                         setDBTip("poo", position + 10);
-                     }else{
-                         setDBTip("poo", position + 1);
-                     }
+                        setDBTip("poo", position );
                     }
                     @Override
                     public void onCancel() {
@@ -386,12 +382,27 @@ public class CalendarInActivity extends AppCompatActivity {
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int sum=0;
+                int sum=0,j=0;
                 for(int i=0;i<healthScore.length; i++){
-                    sum+=healthScore[i];
+                    if(healthScore[i]!=1) {
+                        sum += healthScore[i];
+                        j++;
+                    }
                 }
-                Intent next_intent = new Intent(getApplicationContext(),TipActivity.class);
-                next_intent.putExtra("healthScore",sum/healthScore.length);
+
+                DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
+                mDbHelper.createDatabase();
+                mDbHelper.open();
+                mDbHelper.updateMemo(memo_textView.getText().toString(),selectday);
+                mDbHelper.close();
+
+                Intent next_intent = new Intent(getApplicationContext(), TipActivity.class);
+                next_intent.putExtra("day",selectday);
+                try {
+                    next_intent.putExtra("healthScore", sum / (j));
+                }catch(ArithmeticException e){
+                        j=1;
+                }
                 startActivity(next_intent);
 
             }

@@ -3,35 +3,32 @@ package com.jeongseok.petcare;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.jeongseok.petcare.localdbPet.DataAdapter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
-import org.w3c.dom.Text;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.concurrent.Executors;
+
 
 public class CalendarFragment extends Fragment {
-    private Button button;
+
     private View v;
     MaterialCalendarView materialCalendarView;
+
 
     @Nullable
     @Override
@@ -40,20 +37,42 @@ public class CalendarFragment extends Fragment {
         materialCalendarView = (MaterialCalendarView) v.findViewById(R.id.calendarView);
         materialCalendarView.setDynamicHeightEnabled(true);
         materialCalendarView.setSelectedDate(CalendarDay.today());
+
+        //캘린더 팁 초기화 코드 -> 주석풀고 실행 후 -> 다시실행할때는 주석처리
+        DataAdapter mDbHelper = new DataAdapter(getContext());
+        mDbHelper.createDatabase();
+        mDbHelper.open();
+        mDbHelper.deleteMyTipTable();
+        mDbHelper.close();
+        //
+
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
-            int check =0;
+
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 ArrayList<CalendarDay> calendarDayList = new ArrayList<>();
                 calendarDayList.add(date);
                 EventDecorator eventDecorator = new EventDecorator(Color.BLACK,calendarDayList,getActivity());
                 materialCalendarView.addDecorators(eventDecorator);
-                check++;
-                if(check==1) {
-                    Intent next_intent = new Intent(getActivity(), CalendarInActivity.class);
-                    startActivity(next_intent);
 
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                Log.i("선택한날짜", format.format(date.getDate()));
+
+                DataAdapter mDbHelper = new DataAdapter(getContext());
+                mDbHelper.createDatabase();
+                mDbHelper.open();
+                if(mDbHelper.checkMyImage(format.format(date.getDate()))==true) {
+                    Intent next_intent = new Intent(getActivity(), BeforeTipActivty.class);
+                    next_intent.putExtra("today",date.getYear()+"년 "+(date.getMonth()+1)+"월 "+date.getDay()+"일"+"");
+                    next_intent.putExtra("selectday",format.format(date.getDate()));
+                    startActivity(next_intent);
+                }else{
+                    Intent next_intent = new Intent(getActivity(), CalendarInActivity.class);
+                    next_intent.putExtra("selectday",format.format(date.getDate()));
+                    startActivity(next_intent);
                 }
+                mDbHelper.close();
+
             }
         });
 

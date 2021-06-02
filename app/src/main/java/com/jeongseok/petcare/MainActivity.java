@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private Button start_btn;
-    private int check=0;
+   // private int check=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +32,10 @@ public class MainActivity extends AppCompatActivity {
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (db.profileDao().getAll().size() <= 0&&check==0) {
-                    check++;
+                if (db.profileDao().getAll().size() <= 0) {
                     Intent next_intent = new Intent(MainActivity.this, ProfileActivity.class);
                     startActivity(next_intent);
-                } else if(check==0) {
-                    check++;
+                } else{
                     Intent next_intent = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(next_intent);
                 }

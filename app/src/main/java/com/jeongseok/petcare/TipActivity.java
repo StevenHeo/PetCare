@@ -29,7 +29,6 @@ public class TipActivity extends FragmentActivity {
     private Button tipCheck_button;
     private CalendarFragment calendarFragment;
     private dogDisease dogVO = null;
-
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private TipAdapter tipAdapter;
@@ -52,14 +51,22 @@ public class TipActivity extends FragmentActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        setDoctor(doctorImg,doctorText);
-        DataAdapter mDbHelper = new DataAdapter(this);
+        Intent intent = getIntent();
+        String day = intent.getExtras().getString("day");
+        DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
         mDbHelper.createDatabase();
         mDbHelper.open();
-        dogDiseaseList = mDbHelper.selectMyTipTable();
+        String str=setDoctor(doctorImg,doctorText);
+        mDbHelper.updateImage(str,day);
+        mDbHelper.close();
+
+        mDbHelper = new DataAdapter(this);
+        mDbHelper.createDatabase();
+        mDbHelper.open();
+        dogDiseaseList = mDbHelper.selectMyTipTable(day);
         ArrayList<ItemTip> list = new ArrayList<>();
-        if(dogDiseaseList.size()==0){
-            list.add(new ItemTip("\n상태 진단을 원하신다면?","강아지의 현재 상태를 선택해주세요","상태 진단해 드릴게요!",""));
+       if(dogDiseaseList.size()==0){
+           list.add(new ItemTip("\n상태 진단을 원하신다면?","강아지의 현재 상태를 선택해주세요","상태 진단해 드릴게요!",""));
         }else {
             for (int i = 0; i < dogDiseaseList.size(); i++) {
 
@@ -76,30 +83,28 @@ public class TipActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 Intent next_intent = new Intent(TipActivity.this, HomeActivity.class);
-                DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
-                mDbHelper.createDatabase();
-                mDbHelper.open();
-                mDbHelper.updateMyTipTable();
-                mDbHelper.close();
                 startActivity(next_intent);
             }
         });
 
     }
 
-    public void setDoctor(ImageView imageView,TextView textView){
+    public String setDoctor(ImageView imageView,TextView textView){
         Intent intent = getIntent();
+        String str="";
         int score = intent.getExtras().getInt("healthScore");
         if(score>=90){
             imageView.setImageResource(R.drawable.good_ic);
-            textView.setText("좋음");
+            str="좋음";
         }else if(score>=40){
             imageView.setImageResource(R.drawable.normal_ic);
-            textView.setText("보통");
-        }else if(score>=2){
+            str="보통";
+        }else if(score>=2) {
             imageView.setImageResource(R.drawable.bad_ic);
-            textView.setText("나쁨");
+            str = "나쁨";
         }
+        textView.setText(str);
+        return str;
     }
 
 

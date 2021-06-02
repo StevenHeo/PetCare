@@ -7,7 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.io.IOException;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import java.util.Date;
 import java.util.List;
 
 public class DataAdapter
@@ -61,7 +65,7 @@ public class DataAdapter
         mDbHelper.close();
     }
 
-    public void deleteMyTipTable(){//테스트 연산 다 지우기
+    public void deleteMyTipTable(){
         try {
             mDb.execSQL("DELETE FROM myTipDisease;");
         }catch (SQLException mSQLException)
@@ -71,20 +75,79 @@ public class DataAdapter
         }
     }
 
-    public void updateMyTipTable(){
+
+    public boolean checkMyImage(String date){
+        boolean check=false;
         try {
-            mDb.execSQL("UPDATE myTipDisease SET showCheck=1 WHERE showCheck=-1;");
+            Cursor mCur = mDb.rawQuery("SELECT tipTime FROM myTipDisease WHERE tipTime='"+ date +"' ", null);
+            if (mCur!=null) {
+                while(mCur.moveToNext()) {
+                    check = true;
+                }
+            }else {
+                check = false;
+            }
+            return check;
+        }catch(SQLException mSQLException){
+            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+
+    }
+
+    public List selectMyTipList(String selectday){
+        try{
+            Log.v("dbFile1", selectday.toString());
+            List dateTipList = new ArrayList();
+            myTipDisease myTipDisease = null;
+            Cursor mCur = mDb.rawQuery("SELECT * FROM myTipDisease WHERE tipTime='"+selectday+"' AND imageCheck LIKE '1';", null);
+            if (mCur != null) {
+                while (mCur.moveToNext()) {
+                    myTipDisease = new myTipDisease();
+                    myTipDisease.setDisease(mCur.getString(0));
+                    myTipDisease.setCurrentState(mCur.getString(1));
+                    myTipDisease.setResult1(mCur.getString(2));
+                    myTipDisease.setResult2(mCur.getString(3));
+                    myTipDisease.setTip(mCur.getString(4));
+                    myTipDisease.setMemo(mCur.getString(5));
+                    myTipDisease.setImage(mCur.getString(6));
+
+                    dateTipList.add(myTipDisease);
+                }
+            }
+            return dateTipList;
+        }catch(SQLException mSQLException){
+            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+
+    public void updateImage(String image,String selectday){
+        try {
+            mDb.execSQL("UPDATE myTipDisease SET image ='"+image+"' WHERE tipTime ='"+selectday+"' AND imageCheck LIKE '1';");
         }catch (SQLException mSQLException)
         {
             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
             throw mSQLException;
         }
     }
-    public List selectMyTipTable(){//-1값인 것만 가져오기
+
+    public void updateMemo(String memo,String selectday){
+        try {
+            mDb.execSQL("UPDATE myTipDisease SET memo ='"+memo+"' WHERE tipTime ='"+selectday+"' AND imageCheck LIKE '1';");
+        }catch (SQLException mSQLException)
+        {
+            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+
+
+    public List selectMyTipTable(String day){//-1값인 것만 가져오기
         try{
             List tipList = new ArrayList();
             dogDisease dogDisease = null;
-            Cursor mCur = mDb.rawQuery("SELECT * FROM myTipDisease WHERE showCheck=-1;", null);
+            Cursor mCur = mDb.rawQuery("SELECT * FROM myTipDisease WHERE tipTime='"+day+"' AND imageCheck LIKE '1';", null);
             if (mCur != null) {
                 while (mCur.moveToNext()) {
                     dogDisease = new dogDisease();
@@ -101,49 +164,16 @@ public class DataAdapter
             throw mSQLException;
         }
     }
-    public void insertMyTipTable(String diseaseName, int idx){//선택한거 tip테이블에 넣기
 
+    public void insertMyTipTable(String diseaseName, int idx,String selectday){
+        Log.v("dbFile",selectday);
         try{
-            mDb.execSQL("INSERT INTO myTipDisease(disease,currentState,result1,result2,tip,tipTime,showCheck) SELECT disease,currentState,result1,result2,tip,datetime('NOW','+9 hours'),-1 FROM dogDisease WHERE disease='" + diseaseName + "' and diseaseId='" + idx + "';");
+            mDb.execSQL("INSERT INTO myTipDisease(disease,currentState,result1,result2,tip,imageCheck,tipTime) SELECT disease,currentState,result1,result2,tip,1,'"+selectday+"' FROM dogDisease WHERE disease='" + diseaseName + "' and diseaseId='" + idx + "';");
         }catch(SQLException mSQLException){
             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
             throw mSQLException;
         }
     }
 
-    public List getTableData()//table의 data를 데리고 오는
-    {
-        try
-        {
-            String sql ="SELECT * FROM " + TABLE_NAME;
-            List userList = new ArrayList();
-
-            dogDisease dogDisease = null;
-
-            Cursor mCur = mDb.rawQuery(sql, null);
-            if (mCur!=null)
-            {
-                while( mCur.moveToNext() ) {
-                    dogDisease = new dogDisease();
-
-                    dogDisease.setIdx(mCur.getInt(0));
-                    dogDisease.setDisease(mCur.getString(1));
-                    dogDisease.setDiseaseId(mCur.getInt(2));
-                    dogDisease.setCurrentState(mCur.getString(3));
-                    dogDisease.setResult1(mCur.getString(4));
-                    dogDisease.setResult2(mCur.getString(5));
-                    dogDisease.setTip(mCur.getString(6));
-
-                    userList.add(dogDisease);
-                }
-            }
-            return userList;
-        }
-        catch (SQLException mSQLException)
-        {
-            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
-            throw mSQLException;
-        }
-    }
 
 }
