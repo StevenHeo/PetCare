@@ -29,6 +29,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.slider.LabelFormatter;
 import com.jeongseok.petcare.localdbPet.DataAdapter;
 import com.jeongseok.petcare.localdbPet.dogDisease;
+import com.jeongseok.petcare.localdbPet.myTipDisease;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,9 +79,32 @@ public class StatisticFragment extends Fragment {
         mChart.getAxisRight().setEnabled(false);
         mChart.getLegend().setEnabled(true);
 
-        float[] val1 = {10, 20, 30, 40, 50, 10, 20, 30, 40, 50, 11, 12};
-        float[] val2 = {60, 50, 40, 30, 20, 10, 20, 30, 40, 50, 11, 12};
-        float[] val3 = {20, 10, 30, 60, 40, 10, 20, 30, 40, 50, 11, 12};
+        DataAdapter mDbHelper = new DataAdapter(getContext());
+        mDbHelper.createDatabase();
+        mDbHelper.open();
+        List<myTipDisease> list1 = mDbHelper.getAllElements();
+        mDbHelper.close();
+// Test Value
+//        float[] val1 = {10, 20, 30, 40, 50, 10, 20, 30, 40, 50, 11, 12};
+//        float[] val2 = {60, 50, 40, 30, 20, 10, 20, 30, 40, 50, 11, 12};
+//        float[] val3 = {20, 10, 30, 60, 40, 10, 20, 30, 40, 50, 11, 12};
+        float[] val1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        float[] val2 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        float[] val3 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+        for(myTipDisease t : list1){
+            if(t != null){
+                String[] s = t.getTipTime().split("-");
+                if("나쁨".equals(t.getImage())){
+                    val1[Integer.parseInt(s[1])-1]++;
+                }else if("보통".equals(t.getImage())) {
+                    val2[Integer.parseInt(s[1])-1]++;
+                }else if("좋음".equals(t.getImage())) {
+                    val3[Integer.parseInt(s[1])-1]++;
+                }
+
+            }
+        }
 
         ArrayList<BarEntry> bar1 = new ArrayList<>();
         ArrayList<BarEntry> bar2 = new ArrayList<>();
