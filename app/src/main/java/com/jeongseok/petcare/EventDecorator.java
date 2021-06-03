@@ -21,6 +21,7 @@ public class EventDecorator implements DayViewDecorator {
     public EventDecorator(int color,Collection<CalendarDay> dates,Activity context) {
         drawable = context.getResources().getDrawable(R.drawable.calendar_icon);
 
+        //drawable = drawable;
         this.color = color;
         this.dates = new HashSet<>(dates);
 
@@ -36,7 +37,7 @@ public class EventDecorator implements DayViewDecorator {
     public void decorate(DayViewFacade view) {
         view.addSpan(new DotSpan(5, color));
 
-//        view.setSelectionDrawable(drawable);
+       //view.setSelectionDrawable(drawable);
     }
 
 }

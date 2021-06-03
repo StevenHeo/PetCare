@@ -192,39 +192,13 @@ public class DataAdapter
                 while (mCur.moveToNext()) {
                     myTipDisease = new myTipDisease();
                     myTipDisease.setDisease(mCur.getString(0));
-                    myTipDisease.setCurrentState(mCur.getString(1));
                     myTipDisease.setResult1(mCur.getString(2));
                     myTipDisease.setResult2(mCur.getString(3));
                     myTipDisease.setTip(mCur.getString(4));
-                    myTipDisease.setMemo(mCur.getString(5));
-                    myTipDisease.setImage(mCur.getString(6));
-                    myTipDisease.setTip(mCur.getString(8));
                     dateTipList.add(myTipDisease);
                 }
             }
             return dateTipList;
-        }catch(SQLException mSQLException){
-            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
-            throw mSQLException;
-        }
-    }
-
-    public List selectMyTipTable(){//-1값인 것만 가져오기
-        try{
-            List tipList = new ArrayList();
-            dogDisease dogDisease = null;
-            Cursor mCur = mDb.rawQuery("SELECT * FROM myTipDisease ;", null);
-            if (mCur != null) {
-                while (mCur.moveToNext()) {
-                    dogDisease = new dogDisease();
-                    dogDisease.setDisease(mCur.getString(1));
-                    dogDisease.setResult1(mCur.getString(2));
-                    dogDisease.setResult2(mCur.getString(3));
-                    dogDisease.setTip(mCur.getString(4));
-                    tipList.add(dogDisease);
-                }
-            }
-            return tipList;
         }catch(SQLException mSQLException){
             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
             throw mSQLException;

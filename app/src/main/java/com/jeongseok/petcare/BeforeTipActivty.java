@@ -54,7 +54,7 @@ public class BeforeTipActivty  extends FragmentActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.tip_RecyclerView);
         linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 

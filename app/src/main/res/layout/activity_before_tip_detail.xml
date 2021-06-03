@@ -42,7 +42,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/bf_doctorText"
@@ -70,7 +70,7 @@
                 android:id="@+id/tip_RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+
             />
 
 
@@ -93,6 +93,9 @@
         app:layout_constraintBottom_toTopOf="@+id/cardView3"
         app:layout_constraintStart_toStartOf="@+id/cardView3" />
 
+
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="353dp"
@@ -103,9 +106,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
         <TextView
             android:id="@+id/bf_memo"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,9 +123,10 @@
             android:lineSpacingExtra="1sp"
             android:textColor="#707070"
             android:textSize="14sp"
-      >
+      />
 
-        </TextView>
+
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 
     <Button

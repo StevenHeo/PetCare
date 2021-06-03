@@ -68,7 +68,7 @@ public class CalendarFragment extends Fragment {
             }
         }
 
-        EventDecorator eventDecorator = new EventDecorator(Color.BLACK,calendarDayList,getActivity());
+        EventDecorator eventDecorator = new EventDecorator(R.drawable.bad_ic,calendarDayList,getActivity());
         materialCalendarView.addDecorators(eventDecorator);
 
 

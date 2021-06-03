@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jeongseok.petcare.localdbPet.DataAdapter;
 import com.jeongseok.petcare.localdbPet.dogDisease;
+import com.jeongseok.petcare.localdbPet.myTipDisease;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class TipActivity extends FragmentActivity {
     private LinearLayoutManager linearLayoutManager;
     private TipAdapter tipAdapter;
 
-    public List<dogDisease> dogDiseaseList;
+    public List<myTipDisease> dogDiseaseList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         dogVO = dogVO.getInstance();
@@ -47,7 +48,7 @@ public class TipActivity extends FragmentActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.tip_RecyclerView);
         linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -64,7 +65,6 @@ public class TipActivity extends FragmentActivity {
         mDbHelper.createDatabase();
         mDbHelper.open();
         dogDiseaseList = mDbHelper.selectMyTipTable(day);
-        Log.i("list", dogDiseaseList.toString());
         ArrayList<ItemTip> list = new ArrayList<>();
        if(dogDiseaseList.size()==0){
            list.add(new ItemTip("\n상태 진단을 원하신다면?","강아지의 현재 상태를 선택해주세요","상태 진단해 드릴게요!",""));
@@ -100,12 +100,9 @@ public class TipActivity extends FragmentActivity {
         }else if(score>=40){
             imageView.setImageResource(R.drawable.normal_ic);
             str="보통";
-        }else if(score >=0) {
+        }else if(score >1) {
             imageView.setImageResource(R.drawable.bad_ic);
             str = "나쁨";
-        }else{
-            imageView.setImageResource(R.drawable.normal_ic);
-            str="보통";
         }
         textView.setText(str);
         return str;
