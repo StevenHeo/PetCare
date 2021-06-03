@@ -91,9 +91,9 @@ public class StatisticFragment extends Fragment {
         float[] val1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         float[] val2 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         float[] val3 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
+        Log.d("Test", list1.toString());
         for(myTipDisease t : list1){
-            if(t != null){
+            if(t != null && "poo".equals(t.getDisease())){
                 String[] s = t.getTipTime().split("-");
                 if("나쁨".equals(t.getImage())){
                     val1[Integer.parseInt(s[1])-1]++;

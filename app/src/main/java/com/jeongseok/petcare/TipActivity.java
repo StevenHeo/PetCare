@@ -67,7 +67,7 @@ public class TipActivity extends FragmentActivity {
         dogDiseaseList = mDbHelper.selectMyTipTable(day);
         ArrayList<ItemTip> list = new ArrayList<>();
        if(dogDiseaseList.size()==0){
-           list.add(new ItemTip("\n상태 진단을 원하신다면?","강아지의 현재 상태를 선택해주세요","상태 진단해 드릴게요!",""));
+           list.add(new ItemTip("\n상태 진단을 원하신다면?","강아지의 상태를 선택해주세요","상태 진단해 드릴게요!",""));
         }else {
             for (int i = 0; i < dogDiseaseList.size(); i++) {
 
@@ -103,6 +103,9 @@ public class TipActivity extends FragmentActivity {
         }else if(score >1) {
             imageView.setImageResource(R.drawable.bad_ic);
             str = "나쁨";
+        }else{
+            imageView.setImageResource(R.drawable.normal_ic);
+            str="보통";
         }
         textView.setText(str);
         return str;

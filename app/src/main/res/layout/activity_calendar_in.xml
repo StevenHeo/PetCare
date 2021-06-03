@@ -64,7 +64,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="14dp"
-            app:cardBackgroundColor="#997000"
+            app:cardBackgroundColor="#ffffff"
             app:layout_constraintEnd_toStartOf="@+id/poo_down"
             app:layout_constraintTop_toTopOf="@+id/poo_down" />
 
